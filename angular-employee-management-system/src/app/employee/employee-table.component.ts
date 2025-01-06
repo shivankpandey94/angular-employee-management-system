@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {SelectionModel} from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { EmployeeService } from '../service/employee.service';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -28,7 +31,7 @@ export class EmployeeTableComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
 
-  constructor() { }
+  constructor(private dialogRef: MatDialog, private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
   }
@@ -57,5 +60,17 @@ export class EmployeeTableComponent implements OnInit {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+  }
+
+  openAddDialog() {
+    let dialogRef = this.dialogRef.open(
+      AddEmployeeComponent, 
+      {
+        width: '80%',
+        data: '',
+        //panelClass: 
+      }
+   );
+       dialogRef.afterClosed().subscribe((result: any) => {  });
   }
 }

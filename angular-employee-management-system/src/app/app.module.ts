@@ -4,17 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialUIModule } from './material/material-ui.module';
-import { EmployeeTableComponent } from './employee-table/employee-table.component';
+import { EmployeeTableComponent } from './employee/employee-table.component';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeTableComponent
+    EmployeeTableComponent,
+    AddEmployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialUIModule
+    MaterialUIModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
